@@ -1,4 +1,5 @@
 import Fastify from 'fastify'
+
 const fastify = Fastify({
   // logger: true
 })
@@ -28,12 +29,9 @@ fastify.get('/get', async function handler(request, reply) {
   return reply.send({ value });
 })
 
-async function main() {
-  try {
-    await fastify.listen({ port: 4000 })
-  } catch (err) {
-    fastify.log.error(err)
-    process.exit(1)
-  }
+try {
+  await fastify.listen({ port: 4000 })
+} catch (err) {
+  fastify.log.error(err)
+  process.exit(1)
 }
-main()
